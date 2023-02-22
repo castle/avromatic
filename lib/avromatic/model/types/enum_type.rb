@@ -39,7 +39,7 @@ module Avromatic
         end
 
         def coerced?(value)
-          input.nil? || value.is_a?(::String) && allowed_values.include?(value)
+          value.nil? || value.is_a?(::String) && allowed_values.include?(value)
         end
 
         def coercible?(input)

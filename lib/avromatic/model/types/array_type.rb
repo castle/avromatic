@@ -38,7 +38,7 @@ module Avromatic
         end
 
         def coerced?(value)
-          input.nil? || (value.is_a?(::Array) && value.all? { |element_input| value_type.coerced?(element_input) })
+          value.nil? || (value.is_a?(::Array) && value.all? { |element_input| value_type.coerced?(element_input) })
         end
 
         # we can take any coercible nested values for union types for backward-compatibility

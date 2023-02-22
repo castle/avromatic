@@ -31,8 +31,8 @@ module Avromatic
           end
         end
 
-        def coercible?(value)
-          value.nil? || (value.is_a?(::String) && value.length == size)
+        def coercible?(input)
+          input.nil? || (input.is_a?(::String) && input.length == size)
         end
 
         alias_method :coerced?, :coercible?
