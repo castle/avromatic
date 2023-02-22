@@ -26,8 +26,8 @@ module Avromatic
           end
         end
 
-        def coercible?(value)
-          value.nil? || (value.is_a?(::Integer) && value.between?(-MAX_RANGE, MAX_RANGE - 1))
+        def coercible?(input)
+          input.nil? || (input.is_a?(::Integer) && input.between?(-MAX_RANGE, MAX_RANGE - 1))
         end
 
         alias_method :coerced?, :coercible?
