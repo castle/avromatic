@@ -8,7 +8,7 @@ module Avromatic
       class BigIntType < AbstractType
         VALUE_CLASSES = [::Integer].freeze
 
-        MAX_RANGE = 2 ** 63
+        MAX_RANGE = 2**63
 
         def value_classes
           VALUE_CLASSES
@@ -26,8 +26,8 @@ module Avromatic
           end
         end
 
-        def coercible?(input)
-          input.nil? || (input.is_a?(::Integer) && input.between?(-MAX_RANGE, MAX_RANGE - 1))
+        def coercible?(value)
+          value.nil? || (value.is_a?(::Integer) && value.between?(-MAX_RANGE, MAX_RANGE - 1))
         end
 
         alias_method :coerced?, :coercible?

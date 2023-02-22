@@ -7,9 +7,14 @@ module Avromatic
     module Types
       class DateType < AbstractType
         VALUE_CLASSES = [::Date].freeze
+        INPUT_CLASSES = [::Date, ::Time, ::DateTime].freeze
 
         def value_classes
           VALUE_CLASSES
+        end
+
+        def input_classes
+          INPUT_CLASSES
         end
 
         def name

@@ -76,10 +76,16 @@ module Avromatic
         private
 
         def find_index(value)
-          # TODO: Cache this?
-          member_types.find_index do |member_type|
-            member_type.value_classes.any? { |value_class| value.is_a?(value_class) } && member_type.coercible?(value)
+          matched = member_types.find_index do |member_type|
+            member_type.explicitly_coerced?(value)
           end
+
+          # if no explicitly matched found we try to match by the types which we can coerce
+          matched = member_types.find_index do |member_type|
+            member_type.explicitly_coercible?(value)
+          end if matched.nil?
+
+          matched
         end
 
         def safe_coerce(member_type, input)

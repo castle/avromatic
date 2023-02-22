@@ -8,7 +8,7 @@ module Avromatic
       class IntegerType < AbstractType
         VALUE_CLASSES = [::Integer].freeze
 
-        MAX_RANGE = 2 ** 31
+        MAX_RANGE = 2**31
 
         def value_classes
           VALUE_CLASSES
@@ -19,15 +19,15 @@ module Avromatic
         end
 
         def coerce(input)
-          if input.nil? || input.is_a?(::Integer)
+          if coercible?(input)
             input
           else
             raise ArgumentError.new("Could not coerce '#{input.inspect}' to #{name}")
           end
         end
 
-        def coercible?(input)
-          input.nil? || (input.is_a?(::Integer) && input.between?(-MAX_RANGE, MAX_RANGE - 1))
+        def coercible?(value)
+          value.nil? || (value.is_a?(::Integer) && value.between?(-MAX_RANGE, MAX_RANGE - 1))
         end
 
         alias_method :coerced?, :coercible?
