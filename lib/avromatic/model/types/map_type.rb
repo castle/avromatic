@@ -60,6 +60,13 @@ module Avromatic
           end
         end
 
+        def matched?(value)
+          value.is_a?(::Hash) &&
+            value.all? do |element_key, element_value|
+              key_type.coercible?(element_key) && value_type.coercible?(element_value)
+            end
+        end
+
         def serialize(value, strict)
           if value.nil?
             value

@@ -38,7 +38,11 @@ module Avromatic
         end
 
         def coerced?(value)
-          value.nil? || (value.is_a?(::Array) && value.all? { |element| value_type.coerced?(element) })
+          input.nil? || (value.is_a?(::Array) && value.all? { |element_input| value_type.coerced?(element_input) })
+        end
+
+        def matched?(value)
+          value.is_a?(::Array) && value.all? { |element_input| value_type.coercible?(element_input) }
         end
 
         def serialize(value, strict)

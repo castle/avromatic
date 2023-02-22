@@ -31,11 +31,11 @@ module Avromatic
           end
         end
 
-        def coercible?(input)
-          input.nil? || (input.is_a?(::String) && input.length == size)
+        def matched?(value)
+          (value.is_a?(::String) && value.length == size)
         end
 
-        alias_method :coerced?, :coercible?
+        alias_method :coercible?, :coerced?
 
         def serialize(value, _strict)
           value

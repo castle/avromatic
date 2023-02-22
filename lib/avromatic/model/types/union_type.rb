@@ -76,16 +76,9 @@ module Avromatic
         private
 
         def find_index(value)
-          matched = member_types.find_index do |member_type|
-            member_type.explicitly_coerced?(value)
+          member_types.find_index do |member_type|
+            member_type.matched?(value)
           end
-
-          # if no explicitly matched found we try to match by the types which we can coerce
-          matched = member_types.find_index do |member_type|
-            member_type.explicitly_coercible?(value)
-          end if matched.nil?
-
-          matched
         end
 
         def safe_coerce(member_type, input)

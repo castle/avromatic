@@ -38,6 +38,8 @@ module Avromatic
           value.is_a?(::Time) && value.class != ActiveSupport::TimeWithZone && truncated?(value)
         end
 
+        alias_method :matched?, :coerced?
+
         def serialize(value, _strict)
           value
         end
