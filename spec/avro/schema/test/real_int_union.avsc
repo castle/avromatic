@@ -10,7 +10,6 @@
     {
       "name": "message",
       "type": [
-        "null",
         "int",
         "string",
         "long"

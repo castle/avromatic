@@ -29,7 +29,6 @@ module Avromatic
         end
 
         alias_method :coerced?, :coercible?
-        alias_method :matched?, :coercible?
 
         def serialize(_value, _strict)
           nil

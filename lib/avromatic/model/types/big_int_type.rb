@@ -26,11 +26,11 @@ module Avromatic
           end
         end
 
-        def matched?(value)
-          (value.is_a?(::Integer) && value.between?(-MAX_RANGE, MAX_RANGE - 1))
+        def coercible?(value)
+          value.nil? || (value.is_a?(::Integer) && value.between?(-MAX_RANGE, MAX_RANGE - 1))
         end
 
-        alias_method :coercible?, :coerced?
+        alias_method :coerced?, :coercible?
 
         def serialize(value, _strict)
           value

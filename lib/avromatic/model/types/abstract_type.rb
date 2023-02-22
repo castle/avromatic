@@ -29,11 +29,11 @@ module Avromatic
         end
 
         def coerced?(value)
-          value.nil? || matched?(value)
+          value.nil? || value_classes.any? { |value_class| value.is_a?(value_class) }
         end
 
         def matched?(value)
-          value_classes.any? { |value_class| value.is_a?(value_class) }
+          coerced?(value)
         end
 
         # Note we use positional args rather than keyword args to reduce

@@ -38,8 +38,8 @@ module Avromatic
           end
         end
 
-        def matched?(value)
-          value.is_a?(::String) && allowed_values.include?(value)
+        def coerced?(value)
+          input.nil? || value.is_a?(::String) && allowed_values.include?(value)
         end
 
         def coercible?(input)

@@ -73,7 +73,7 @@ describe Avromatic::IO::DatumWriter do
           end
 
           it "calls write_data to encode the union" do
-            expect(datum_writer).to have_received(:write_data).with(union_schema.schemas[1], datum.datum, encoder)
+            expect(datum_writer).to have_received(:write_data).with(union_schema.schemas[0], datum.datum, encoder)
           end
         end
       end
@@ -96,7 +96,7 @@ describe Avromatic::IO::DatumWriter do
           end
 
           it "calls write_data to encode the union" do
-            expect(datum_writer).to have_received(:write_data).with(union_schema.schemas[3], datum.datum, encoder)
+            expect(datum_writer).to have_received(:write_data).with(union_schema.schemas[2], datum.datum, encoder)
           end
         end
       end
