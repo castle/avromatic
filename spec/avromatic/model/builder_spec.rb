@@ -454,7 +454,7 @@ describe Avromatic::Model::Builder do
         it "accepts a Rational" do
           rational = 2 / 3r
           instance = test_class.new(decimal: rational)
-          expect(instance.decimal).to eq(rational.to_d(4))
+          expect(instance.decimal).to eq(rational.to_d(2))
         end
 
         it "accepts a Float" do

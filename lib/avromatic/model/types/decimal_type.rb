@@ -36,7 +36,7 @@ module Avromatic
           when ::NilClass, ::BigDecimal
             input
           when ::Rational
-            input.to_d(precision)
+            input.to_d(scale)
           when ::Numeric, ::String
             input.to_d
           else
