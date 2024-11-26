@@ -9,7 +9,7 @@ module Avromatic
     module Types
       class DecimalType < AbstractType
         VALUE_CLASSES = [::BigDecimal].freeze
-        INPUT_CLASSES = [::BigDecimal, ::Float, ::Integer].freeze
+        INPUT_CLASSES = [::BigDecimal, ::Float, ::Integer, ::String].freeze
 
         attr_reader :precision, :scale
 
@@ -35,7 +35,7 @@ module Avromatic
           case input
           when ::NilClass, ::BigDecimal
             input
-          when ::Float, ::Integer
+          when ::Float, ::Integer, ::String
             input.to_d
           else
             raise ArgumentError.new("Could not coerce '#{input.inspect}' to #{name}")
