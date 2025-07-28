@@ -24,6 +24,8 @@ module Avromatic
         end
 
         def coerce_time(input)
+          return Time.iso8601(input) if input.is_a?(String)
+
           # value is coerced to a local Time
           # The Avro representation of a timestamp is Epoch seconds, independent
           # of time zone.
