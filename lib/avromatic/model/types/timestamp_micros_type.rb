@@ -24,6 +24,8 @@ module Avromatic
         end
 
         def coerce_time(input)
+          # .iso8601 raises an error if the input is not a valid ISO 8601 string
+          # it is handled by the caller
           return Time.iso8601(input) if input.is_a?(String)
 
           # value is coerced to a local Time
